@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AdminActivity"
+    tools:layout_editor_absoluteY="81dp">
+
+    <Button
+        android:id="@+id/Bviewdata"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginRight="22dp"
+        android:onClick="viewdata"
+        android:text="view users data"
+        app:layout_constraintEnd_toEndOf="@+id/BaddP"
+        app:layout_constraintTop_toBottomOf="@+id/BaddP" />
+
+    <Button
+        android:id="@+id/Bback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="7dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="45dp"
+        android:onClick="back"
+        android:text="back"
+        app:layout_constraintStart_toStartOf="@+id/Bviewproducts"
+        app:layout_constraintTop_toBottomOf="@+id/Bviewproducts" />
+
+    <Button
+        android:id="@+id/BaddP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="108dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginRight="100dp"
+        android:onClick="addProduct"
+        android:text="add product"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/Bviewproducts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="15dp"
+        android:onClick="viewProducts"
+        android:text="view products data"
+        app:layout_constraintStart_toStartOf="@+id/Bviewdata"
+        app:layout_constraintTop_toBottomOf="@+id/Bviewdata" />
+</android.support.constraint.ConstraintLayout>

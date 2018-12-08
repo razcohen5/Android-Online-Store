@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditProductActivity"
+    tools:layout_editor_absoluteY="81dp">
+
+    <Button
+        android:id="@+id/Beditproduct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="108dp"
+        android:layout_marginEnd="115dp"
+        android:layout_marginRight="115dp"
+        android:onClick="changeProduct"
+        android:text="edit product"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/Bdelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginLeft="14dp"
+        android:onClick="delete"
+        android:text="delete"
+        app:layout_constraintStart_toStartOf="@+id/Beditproduct"
+        app:layout_constraintTop_toBottomOf="@+id/Beditproduct" />
+
+    <Button
+        android:id="@+id/Bdeleteall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="deleteAll"
+        android:text="delete all"
+        app:layout_constraintStart_toStartOf="@+id/Bdelete"
+        app:layout_constraintTop_toBottomOf="@+id/Bdelete" />
+
+    <Button
+        android:id="@+id/Bback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="back"
+        android:text="back"
+        app:layout_constraintStart_toStartOf="@+id/Bdeleteall"
+        app:layout_constraintTop_toBottomOf="@+id/Bdeleteall" />
+</android.support.constraint.ConstraintLayout>

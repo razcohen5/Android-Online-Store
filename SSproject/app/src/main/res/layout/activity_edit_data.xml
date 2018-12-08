@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditDataActivity">
+
+    <Button
+        android:id="@+id/Bdelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="133dp"
+        android:onClick="delete"
+        android:text="delete" />
+
+    <Button
+        android:id="@+id/Bdeleteall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Bdelete"
+        android:layout_alignStart="@+id/Bdelete"
+        android:onClick="deleteAll"
+        android:text="delete all" />
+
+    <Button
+        android:id="@+id/Bback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Bdeleteall"
+        android:layout_alignStart="@+id/Bdelete"
+        android:onClick="back"
+        android:text="back" />
+</RelativeLayout>
