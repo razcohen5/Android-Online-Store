@@ -1,11 +1,9 @@
-package com.example.yakirlaptop.ssproject;
+package com.example.yakirlaptop.ssproject.Activities;
 
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
@@ -13,60 +11,38 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.yakirlaptop.ssproject.DatabaseAPI.DatabaseOpenHelper;
+import com.example.yakirlaptop.ssproject.R;
+import com.example.yakirlaptop.ssproject.Singletons.Server;
+
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public class ChangeProductActivity extends AppCompatActivity {
+public class AddProductActivity extends AppCompatActivity {
     DatabaseOpenHelper dbhelper;
-    TextView productname;
+    EditText productname;
     EditText price;
     EditText quantity;
     private static int PICK_IMAGE_REQUEST = 1;
     ImageView imageView;
     Bitmap bitmap;
-    String imgPath;
-    private String product;
+    String imgPath = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_change_product);
-
-        productname = findViewById(R.id.TVproduct);
+        setContentView(R.layout.activity_add_product);
+        Server.getServer().setContext(this);
+        productname = findViewById(R.id.ETname);
         price = findViewById(R.id.ETprice);
         quantity = findViewById(R.id.ETquantity);
         dbhelper = new DatabaseOpenHelper(this);
-        Intent intent = getIntent();
-        product = intent.getStringExtra("productname");
-        Cursor data1 = dbhelper.getPrice(product);
-        Cursor data2 = dbhelper.getQuantity(product);
-        Cursor data3 = dbhelper.getImgPath(product);
-        String price = null;
-        String quantity = null;
-        imgPath = null;
-        while(data1.moveToNext()){
-            price = data1.getString(0);
-        }
-        while(data2.moveToNext()){
-            quantity = data2.getString(0);
-        }
-        while(data3.moveToNext()){
-            imgPath = data3.getString(0);
-        }
-        productname.setText(product);
-        this.price.setText(price);
-        this.quantity.setText(quantity);
-        loadImageFromStorage(imgPath,product);
-
     }
 
-    public void changePicture(View view){
+    public void addPicture(View view){
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
@@ -74,31 +50,36 @@ public class ChangeProductActivity extends AppCompatActivity {
     }
 
     public void addProduct(View view){
+        String newProduct = productname.getText().toString();
         String newPrice = price.getText().toString();
         String newQuantity = quantity.getText().toString();
         String newImg = imgPath;
-        if (newPrice.length() == 0 || newQuantity.length() == 0 || newImg.length() == 0){
+        if (newProduct.length() == 0 || newPrice.length() == 0 || newQuantity.length() == 0 || newImg == null){
             Toast.makeText(this,"Please fill all of the above",Toast.LENGTH_LONG).show();
         }
         else{
-                changeData(product,newPrice,newQuantity,newImg);
-                Intent intent = new Intent(getApplicationContext(),ProductDataActivity.class);
-                startActivity(intent);
+            if (dbhelper.productAlreadyExists(newProduct)) {
+                Toast.makeText(this, "Product already exists!", Toast.LENGTH_LONG).show();
+            }
+            else{
+                //addData(newProduct,newPrice,newQuantity,newImg);
+                Intent i = new Intent(getApplicationContext(),ListProductsActivity.class);
+                startActivity(i);
             }
         }
-
-
-    public void changeData(String product, String price , String quantity, String img){
-        boolean insertData = dbhelper.changeProduct(product,price,quantity,img);
-        if (insertData){
-            Toast.makeText(this,"Data successfully inserted",Toast.LENGTH_LONG).show();
-        }
-        else {
-            Toast.makeText(this,"Something went wrong",Toast.LENGTH_LONG).show();
-        }
-
-
     }
+
+//    public void addData(String product, String price , String quantity, String img){
+//        boolean insertData = dbhelper.addProducts(product,price,quantity,img);
+//        if (insertData){
+//            Toast.makeText(this,"Data successfully inserted",Toast.LENGTH_LONG).show();
+//        }
+//        else {
+//            Toast.makeText(this,"Something went wrong",Toast.LENGTH_LONG).show();
+//        }
+//
+//
+//    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -117,7 +98,7 @@ public class ChangeProductActivity extends AppCompatActivity {
             }
         }
     }
-    private void saveToInternalStorage(Bitmap bitmapImage, String name){
+    private void saveToInternalStorage(Bitmap bitmapImage,String name){
         ContextWrapper cw = new ContextWrapper(getApplicationContext());
         // path to /data/data/yourapp/app_data/imageDir
         File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
@@ -140,25 +121,4 @@ public class ChangeProductActivity extends AppCompatActivity {
         }
         imgPath = directory.getAbsolutePath();
     }
-
-    private void loadImageFromStorage(String path,String product)
-    {
-
-        try {
-            File f=new File(path, product+".jpg");
-            Bitmap b = BitmapFactory.decodeStream(new FileInputStream(f));
-            ImageView img=findViewById(R.id.imageView);
-            img.setImageBitmap(b);
-        }
-        catch (FileNotFoundException e)
-        {
-            e.printStackTrace();
-        }
-
-    }
-    public void back(View view){
-        Intent intent = new Intent(getApplicationContext(),AdminActivity.class);
-        startActivity(intent);
-    }
-
 }

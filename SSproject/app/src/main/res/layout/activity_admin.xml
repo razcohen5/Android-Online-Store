@@ -4,54 +4,85 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdminActivity"
+    tools:context=".Activities.AdminActivity"
     tools:layout_editor_absoluteY="81dp">
 
     <Button
         android:id="@+id/Bviewdata"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="22dp"
-        android:layout_marginRight="22dp"
-        android:onClick="viewdata"
-        android:text="view users data"
-        app:layout_constraintEnd_toEndOf="@+id/BaddP"
-        app:layout_constraintTop_toBottomOf="@+id/BaddP" />
+        android:layout_marginBottom="47dp"
+        android:onClick="viewUsers"
+        android:text="view users"
+        app:layout_constraintBottom_toTopOf="@+id/BaddP"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/Bback"
+        android:id="@+id/Bback2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="7dp"
-        android:layout_marginLeft="7dp"
-        android:layout_marginTop="45dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginLeft="33dp"
+        android:layout_marginBottom="16dp"
         android:onClick="back"
         android:text="back"
-        app:layout_constraintStart_toStartOf="@+id/Bviewproducts"
-        app:layout_constraintTop_toBottomOf="@+id/Bviewproducts" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/BaddP"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="108dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginRight="100dp"
+        android:layout_marginEnd="27dp"
+        android:layout_marginRight="27dp"
+        android:layout_marginBottom="16dp"
         android:onClick="addProduct"
         android:text="add product"
+        app:layout_constraintBottom_toTopOf="@+id/baddS"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/Bviewproducts" />
 
     <Button
         android:id="@+id/Bviewproducts"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:layout_marginLeft="1dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginLeft="33dp"
+        android:layout_marginTop="179dp"
+        android:layout_marginEnd="58dp"
+        android:layout_marginRight="58dp"
         android:onClick="viewProducts"
-        android:text="view products data"
-        app:layout_constraintStart_toStartOf="@+id/Bviewdata"
-        app:layout_constraintTop_toBottomOf="@+id/Bviewdata" />
+        android:text="VIEW PRODUCTS"
+        app:layout_constraintEnd_toStartOf="@+id/BaddP"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/Bviewsuppliers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="33dp"
+        android:layout_marginLeft="33dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginRight="56dp"
+        android:onClick="viewSuppliers"
+        android:text="VIEW SUPPLIERS"
+        app:layout_constraintEnd_toStartOf="@+id/baddS"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Bviewproducts" />
+
+    <Button
+        android:id="@+id/baddS"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
+        android:onClick="addSupplier"
+        android:text="ADD SUPPLIER"
+        app:layout_constraintBottom_toBottomOf="@+id/Bviewsuppliers"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Bviewsuppliers"
+        app:layout_constraintTop_toTopOf="@+id/Bviewsuppliers" />
 </android.support.constraint.ConstraintLayout>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EditProductActivity"
+    tools:context=".Activities.EditProductActivity"
     tools:layout_editor_absoluteY="81dp">
 
     <Button
@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/Bdelete"
+        android:id="@+id/Bdelete2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
@@ -31,20 +31,20 @@
         app:layout_constraintTop_toBottomOf="@+id/Beditproduct" />
 
     <Button
-        android:id="@+id/Bdeleteall"
+        android:id="@+id/Bdeleteall2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="deleteAll"
         android:text="delete all"
-        app:layout_constraintStart_toStartOf="@+id/Bdelete"
-        app:layout_constraintTop_toBottomOf="@+id/Bdelete" />
+        app:layout_constraintStart_toStartOf="@+id/Bdelete2"
+        app:layout_constraintTop_toBottomOf="@+id/Bdelete2" />
 
     <Button
-        android:id="@+id/Bback"
+        android:id="@+id/Bback2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="back"
         android:text="back"
-        app:layout_constraintStart_toStartOf="@+id/Bdeleteall"
-        app:layout_constraintTop_toBottomOf="@+id/Bdeleteall" />
+        app:layout_constraintStart_toStartOf="@+id/Bdeleteall2"
+        app:layout_constraintTop_toBottomOf="@+id/Bdeleteall2" />
 </android.support.constraint.ConstraintLayout>

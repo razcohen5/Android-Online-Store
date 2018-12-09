@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.AddSupplierActivity"
+    tools:layout_editor_absoluteY="81dp">
+
+    <EditText
+        android:id="@+id/ETname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="82dp"
+        android:layout_marginBottom="13dp"
+        android:ems="10"
+        android:hint="Supplier Name"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/ETphone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/ETphone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="14dp"
+        android:ems="10"
+        android:hint="Phone Number"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/ETemail"
+        app:layout_constraintStart_toStartOf="@+id/ETname"
+        app:layout_constraintTop_toBottomOf="@+id/ETname" />
+
+    <EditText
+        android:id="@+id/ETemail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="13dp"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/ETcompany"
+        app:layout_constraintStart_toStartOf="@+id/ETphone"
+        app:layout_constraintTop_toBottomOf="@+id/ETphone" />
+
+    <EditText
+        android:id="@+id/ETcompany"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:ems="10"
+        android:hint="Company"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/BaddProduct"
+        app:layout_constraintStart_toStartOf="@+id/ETemail"
+        app:layout_constraintTop_toBottomOf="@+id/ETemail" />
+
+    <Button
+        android:id="@+id/BaddProduct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="11dp"
+        android:onClick="addSupplier"
+        android:text="add supplier"
+        app:layout_constraintBottom_toTopOf="@+id/back"
+        app:layout_constraintStart_toStartOf="@+id/back"
+        app:layout_constraintTop_toBottomOf="@+id/ETcompany" />
+
+    <Button
+        android:id="@+id/back"
+        android:layout_width="120dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="72dp"
+        android:onClick="back"
+        android:text="back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/BaddProduct" />
+
+</android.support.constraint.ConstraintLayout>

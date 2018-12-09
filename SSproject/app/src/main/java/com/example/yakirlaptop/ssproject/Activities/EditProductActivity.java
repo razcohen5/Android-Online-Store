@@ -1,10 +1,13 @@
-package com.example.yakirlaptop.ssproject;
+package com.example.yakirlaptop.ssproject.Activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
+
+import com.example.yakirlaptop.ssproject.DatabaseAPI.DatabaseOpenHelper;
+import com.example.yakirlaptop.ssproject.R;
 
 public class EditProductActivity extends AppCompatActivity {
     DatabaseOpenHelper dbhelper;
@@ -30,13 +33,13 @@ public class EditProductActivity extends AppCompatActivity {
     public void delete(View view){
         dbhelper.deleteProduct(productname,price);
         toast("product deleted");
-        Intent intent = new Intent (getApplicationContext(), ProductDataActivity.class);
+        Intent intent = new Intent (getApplicationContext(), ListProductsActivity.class);
         startActivity(intent);
     }
     public void deleteAll(View view){
         dbhelper.deleteAllProducts();
         toast("All deleted");
-        Intent intent = new Intent (getApplicationContext(), ProductDataActivity.class);
+        Intent intent = new Intent (getApplicationContext(), ListProductsActivity.class);
         startActivity(intent);
     }
 

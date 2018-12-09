@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Activities.MainActivity">
 
     <EditText
         android:id="@+id/ETname"
@@ -54,7 +54,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="65dp"
         android:layout_marginTop="2dp"
-        android:onClick="enterBuyer"
+        android:onClick="login"
         android:text="login" />
 
     <Button

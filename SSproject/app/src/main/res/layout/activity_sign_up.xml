@@ -4,29 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignUpActivity">
+    tools:context=".Activities.SignUpActivity">
 
     <EditText
-        android:id="@+id/ETfirst"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
-        android:ems="10"
-        android:hint="First Name"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/ETlast"
+        android:id="@+id/ETname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Last Name"
+        android:hint="Name"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="@+id/ETfirst"
-        app:layout_constraintTop_toBottomOf="@+id/ETfirst" />
+        tools:layout_editor_absoluteX="85dp"
+        tools:layout_editor_absoluteY="66dp" />
 
     <EditText
         android:id="@+id/ETuser"
@@ -35,8 +23,8 @@
         android:ems="10"
         android:hint="Username"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="@+id/ETlast"
-        app:layout_constraintTop_toBottomOf="@+id/ETlast" />
+        app:layout_constraintStart_toStartOf="@+id/ETname"
+        app:layout_constraintTop_toBottomOf="@+id/ETname" />
 
     <EditText
         android:id="@+id/ETpass"
@@ -62,13 +50,13 @@
         android:id="@+id/Bsignup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="signup"
+        android:onClick="signUp"
         android:text="sign up"
-        app:layout_constraintBottom_toTopOf="@+id/Bback"
-        app:layout_constraintStart_toStartOf="@+id/Bback" />
+        app:layout_constraintBottom_toTopOf="@+id/Bback2"
+        app:layout_constraintStart_toStartOf="@+id/Bback2" />
 
     <Button
-        android:id="@+id/Bback"
+        android:id="@+id/Bback2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="87dp"
