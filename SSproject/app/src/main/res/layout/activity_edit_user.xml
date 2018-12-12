@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EditDataActivity">
+    tools:context=".Activities.EditUserActivity">
 
     <Button
-        android:id="@+id/Bdelete"
+        android:id="@+id/Bdelete2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -17,20 +17,14 @@
         android:text="delete" />
 
     <Button
-        android:id="@+id/Bdeleteall"
+        android:id="@+id/Bdeleteall2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/Bdelete"
-        android:layout_alignStart="@+id/Bdelete"
+        android:layout_below="@+id/Bdelete2"
+        android:layout_alignStart="@+id/Bdelete2"
+        android:layout_marginStart="-2dp"
+        android:layout_marginTop="11dp"
         android:onClick="deleteAll"
         android:text="delete all" />
 
-    <Button
-        android:id="@+id/Bback"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/Bdeleteall"
-        android:layout_alignStart="@+id/Bdelete"
-        android:onClick="back"
-        android:text="back" />
 </RelativeLayout>

@@ -4,71 +4,67 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.SignUpActivity">
+    tools:context=".Activities.AddSupplierActivity"
+    tools:layout_editor_absoluteY="81dp">
 
     <EditText
         android:id="@+id/ETname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="66dp"
+        android:layout_marginTop="82dp"
+        android:layout_marginBottom="13dp"
         android:ems="10"
-        android:hint="Name"
+        android:hint="Supplier Name"
         android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/ETphone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/ETuser"
+        android:id="@+id/ETphone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="14dp"
         android:ems="10"
-        android:hint="Username"
+        android:hint="Phone Number"
         android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/ETemail"
         app:layout_constraintStart_toStartOf="@+id/ETname"
         app:layout_constraintTop_toBottomOf="@+id/ETname" />
 
     <EditText
-        android:id="@+id/ETpass"
+        android:id="@+id/ETemail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Pasword"
-        android:inputType="textPassword"
-        app:layout_constraintStart_toStartOf="@+id/ETuser"
-        app:layout_constraintTop_toBottomOf="@+id/ETuser" />
-
-    <EditText
-        android:id="@+id/ETmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_marginBottom="13dp"
         android:ems="10"
         android:hint="Email"
-        android:inputType="textEmailAddress"
-        app:layout_constraintStart_toStartOf="@+id/ETpass"
-        app:layout_constraintTop_toBottomOf="@+id/ETpass" />
-
-    <Button
-        android:id="@+id/Bsignup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="34dp"
-        android:onClick="signUp"
-        android:text="sign up"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ETcredit" />
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/ETcompany"
+        app:layout_constraintStart_toStartOf="@+id/ETphone"
+        app:layout_constraintTop_toBottomOf="@+id/ETphone" />
 
     <EditText
-        android:id="@+id/ETcredit"
+        android:id="@+id/ETcompany"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="1dp"
-        android:layout_marginRight="1dp"
+        android:layout_marginBottom="30dp"
         android:ems="10"
-        android:hint="Credit Card"
+        android:hint="Company"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/ETmail"
-        app:layout_constraintTop_toBottomOf="@+id/ETmail" />
+        app:layout_constraintBottom_toTopOf="@+id/BaddProduct"
+        app:layout_constraintStart_toStartOf="@+id/ETemail"
+        app:layout_constraintTop_toBottomOf="@+id/ETemail" />
+
+    <Button
+        android:id="@+id/BaddProduct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="addSupplier"
+        android:text="add supplier"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ETcompany" />
 
 </android.support.constraint.ConstraintLayout>

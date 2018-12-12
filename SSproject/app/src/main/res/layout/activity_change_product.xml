@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ChangeProductActivity"
+    tools:context=".Activities.ChangeProductActivity"
     tools:layout_editor_absoluteY="81dp">
 
     <EditText
@@ -76,12 +76,4 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
 
-    <Button
-        android:id="@+id/Bback"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="back"
-        android:text="back"
-        tools:layout_editor_absoluteX="147dp"
-        tools:layout_editor_absoluteY="469dp" />
 </android.support.constraint.ConstraintLayout>

@@ -9,22 +9,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".Activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ListDataActivity" />
-        <activity android:name=".EditDataActivity" />
-        <activity android:name=".SignUpActivity" />
-        <activity android:name=".BuyerActivity" />
-        <activity android:name=".AdminActivity" />
-        <activity android:name=".AddProductActivity" />
-        <activity android:name=".ProductDataActivity" />
-        <activity android:name=".EditProductActivity" />
-        <activity android:name=".ChangeProductActivity"></activity>
+        <activity android:name=".Activities.ListUsersActivity" />
+        <activity android:name=".Activities.EditUserActivity" />
+        <activity android:name=".Activities.SignUpActivity" />
+        <activity android:name=".Activities.CustomerActivity" />
+        <activity android:name=".Activities.AdminActivity" />
+        <activity android:name=".Activities.AddProductActivity" />
+        <activity android:name=".Activities.ListProductsActivity" />
+        <activity android:name=".Activities.EditProductActivity" />
+        <activity android:name=".Activities.ChangeProductActivity" />
+        <activity android:name=".Activities.ListSuppliersActivity" />
+        <activity android:name=".Activities.EditSupplierActivity" />
+        <activity android:name=".Activities.AddSupplierActivity"></activity>
     </application>
 
 </manifest>
