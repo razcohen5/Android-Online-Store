@@ -28,27 +28,30 @@ public class EditProductActivity extends AppCompatActivity {
     public void changeProduct(View view){
         Intent intent = new Intent(getApplicationContext(),ChangeProductActivity.class);
         intent.putExtra("productname",productname);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
+
     public void delete(View view){
         dbhelper.deleteProduct(productname,price);
-        toast("product deleted");
+        Toast.makeText(this,"Product deleted." ,Toast.LENGTH_LONG).show();
         Intent intent = new Intent (getApplicationContext(), ListProductsActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
+
     public void deleteAll(View view){
         dbhelper.deleteAllProducts();
-        toast("All deleted");
+        Toast.makeText(this,"All products deleted." ,Toast.LENGTH_LONG).show();
         Intent intent = new Intent (getApplicationContext(), ListProductsActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
 
-    public void toast(String msg){
-        Toast.makeText(this,msg ,Toast.LENGTH_LONG).show();
-    }
-
-    public void back(View view){
-        Intent intent = new Intent(getApplicationContext(),AdminActivity.class);
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent (getApplicationContext(), ListProductsActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
 }

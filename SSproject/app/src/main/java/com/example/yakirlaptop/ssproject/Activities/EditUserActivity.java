@@ -25,19 +25,23 @@ public class EditUserActivity extends AppCompatActivity {
     public void delete(View view){
         UserHolder.getUserHolder().getAdmin().deleteUser(username);
         Toast.makeText(this, "User deleted.", Toast.LENGTH_LONG).show();
-        Intent intent = new Intent (getApplicationContext(), AdminActivity.class);
+        Intent intent = new Intent (getApplicationContext(), ListUsersActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
     public void deleteAll(View view){
         UserHolder.getUserHolder().getAdmin().deleteAllUsers();
         Server.getServer().deleteAllUsers();
         Toast.makeText(this,"All users deleted." ,Toast.LENGTH_LONG).show();
-        Intent intent = new Intent (getApplicationContext(), AdminActivity.class);
+        Intent intent = new Intent (getApplicationContext(), ListUsersActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
 
-    public void back(View view){
-        Intent intent = new Intent (getApplicationContext(), AdminActivity.class);
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent (getApplicationContext(), ListUsersActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
 }

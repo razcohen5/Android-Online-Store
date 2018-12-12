@@ -86,6 +86,7 @@ public class ChangeProductActivity extends AppCompatActivity {
         else{
                 changeData(1,product,newPrice,newQuantity,newImg);
                 Intent intent = new Intent(getApplicationContext(),ListProductsActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
             }
         }
@@ -159,8 +160,11 @@ public class ChangeProductActivity extends AppCompatActivity {
         }
 
     }
-    public void back(View view){
-        Intent intent = new Intent(getApplicationContext(),AdminActivity.class);
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent (getApplicationContext(), ListProductsActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
 

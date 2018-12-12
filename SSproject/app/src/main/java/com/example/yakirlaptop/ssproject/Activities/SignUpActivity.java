@@ -66,8 +66,16 @@ public class SignUpActivity extends AppCompatActivity {
 //
 //    }
 
-    public void back(View view){
-        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+    public void signup(View view){
+        Intent intent  = new Intent(getApplicationContext(),SignUpActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent (getApplicationContext(), MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
 }

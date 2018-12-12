@@ -42,14 +42,13 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "Wrong username or password.", Toast.LENGTH_LONG).show();
             else {
                 UserHolder.getUserHolder().setUser(user);//set userholder with the user from server
+                Intent intent;
                 if (UserHolder.getUserHolder().getUser().getAdmin() == 1)//admin user->send to admin activity
-                {
-                    Intent intent = new Intent(getApplicationContext(), AdminActivity.class);
-                    startActivity(intent);
-                } else {
-                    Intent intent = new Intent(getApplicationContext(), CustomerActivity.class);//customer user->send to customer activity
-                    startActivity(intent);
-                }
+                    intent = new Intent(getApplicationContext(), AdminActivity.class);
+                else
+                    intent = new Intent(getApplicationContext(), CustomerActivity.class);//customer user->send to customer activity
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
             }
         }
         else
@@ -76,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
 //    }
     public void signup(View view){
         Intent intent  = new Intent(getApplicationContext(),SignUpActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
 
@@ -85,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void admin(View view){
             Intent intent = new Intent(getApplicationContext(), AdminActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
     }
 

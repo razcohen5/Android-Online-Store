@@ -39,6 +39,7 @@ public class ListProductsActivity extends AppCompatActivity {
                 int p_id = Integer.parseInt(p_idString);
                 Intent intent = new Intent(getApplicationContext(), EditProductActivity.class);
                 intent.putExtra("p_id",p_id);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
             }
         });
@@ -51,5 +52,12 @@ public class ListProductsActivity extends AppCompatActivity {
         return split2[1];
 
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent (getApplicationContext(), AdminActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
     }
 }

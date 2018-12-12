@@ -19,18 +19,6 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/Bback2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="33dp"
-        android:layout_marginLeft="33dp"
-        android:layout_marginBottom="16dp"
-        android:onClick="back"
-        android:text="back"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
         android:id="@+id/BaddP"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

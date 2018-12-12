@@ -22,15 +22,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/Bdelete2"
         android:layout_alignStart="@+id/Bdelete2"
+        android:layout_marginStart="-2dp"
+        android:layout_marginTop="11dp"
         android:onClick="deleteAll"
         android:text="delete all" />
 
-    <Button
-        android:id="@+id/Bback2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/Bdeleteall2"
-        android:layout_alignStart="@+id/Bdelete2"
-        android:onClick="back"
-        android:text="back" />
 </RelativeLayout>

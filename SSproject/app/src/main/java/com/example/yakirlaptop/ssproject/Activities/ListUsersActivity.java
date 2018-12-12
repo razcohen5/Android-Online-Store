@@ -40,6 +40,7 @@ public class ListUsersActivity extends AppCompatActivity {
                     String name = extractname(adapterView.getItemAtPosition(i).toString());
                     Intent intent = new Intent(getApplicationContext(), EditUserActivity.class);
                     intent.putExtra("username",name);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                 }
         });
@@ -57,5 +58,12 @@ public class ListUsersActivity extends AppCompatActivity {
         return split2[1];
 
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent (getApplicationContext(), AdminActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
     }
 }

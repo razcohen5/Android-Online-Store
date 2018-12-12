@@ -40,6 +40,7 @@ public class ListSuppliersActivity extends AppCompatActivity {
                 int s_id = Integer.parseInt(s_idString);
                 Intent intent = new Intent(getApplicationContext(), EditSupplierActivity.class);
                 intent.putExtra("s_id",s_id);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
             }
         });
@@ -50,5 +51,12 @@ public class ListSuppliersActivity extends AppCompatActivity {
         String[] split2 = split[0].split(" ");
 
         return split2[1];
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent (getApplicationContext(), AdminActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
     }
 }

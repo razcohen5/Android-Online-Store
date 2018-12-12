@@ -50,5 +50,13 @@ public class AddSupplierActivity extends AppCompatActivity {
                 }
             }
         }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent (getApplicationContext(), AdminActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+    }
+
     }
 

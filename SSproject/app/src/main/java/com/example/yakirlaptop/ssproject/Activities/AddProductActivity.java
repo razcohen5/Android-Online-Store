@@ -22,7 +22,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class AddProductActivity extends AppCompatActivity {
-    DatabaseOpenHelper dbhelper;
     EditText productname;
     EditText price;
     EditText quantity;
@@ -39,7 +38,6 @@ public class AddProductActivity extends AppCompatActivity {
         productname = findViewById(R.id.ETname);
         price = findViewById(R.id.ETprice);
         quantity = findViewById(R.id.ETquantity);
-        dbhelper = new DatabaseOpenHelper(this);
     }
 
     public void addPicture(View view){
@@ -63,8 +61,9 @@ public class AddProductActivity extends AppCompatActivity {
             }
             else{
                 //addData(newProduct,newPrice,newQuantity,newImg);
-                Intent i = new Intent(getApplicationContext(),ListProductsActivity.class);
-                startActivity(i);
+                Intent intent = new Intent(getApplicationContext(),ListProductsActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
             }
         }
     }
@@ -120,5 +119,12 @@ public class AddProductActivity extends AppCompatActivity {
             }
         }
         imgPath = directory.getAbsolutePath();
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent (getApplicationContext(), AdminActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
     }
 }
