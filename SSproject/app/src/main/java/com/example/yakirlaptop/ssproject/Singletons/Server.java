@@ -74,7 +74,7 @@ public class Server {
         }
         return listdata;
     }
-
+  
     public ArrayList<String> getSuppliersNames(){
         ArrayList<String> listdata = new ArrayList<>();;
         Cursor data = db.getSuppliersTable();
@@ -111,7 +111,7 @@ public class Server {
         server.db.addProduct(s_id,name,price,quantity,image);
         return true;
     }
-
+  
     public void deleteUser(String username)
     {
         db.deleteUser(username);
@@ -147,5 +147,6 @@ public class Server {
             file.delete();
         }
         db.deleteAllProducts();
+
     }
 }

@@ -22,7 +22,6 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
     private static final String TABLE_NAME_3 = "suppliers";
     private static final String[] TABLE_3_COLUMNS = {new String("s_id"),new String("name"),new String("phone"),new String("email"),new String("company")};
 
-
     public DatabaseOpenHelper(Context context) {
         super(context, "db",null, 1);
     }
@@ -167,7 +166,6 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
         return product;
     }
 
-
     public boolean editProduct(int p_id,String name,int price,int quantity, String image){
         SQLiteDatabase db =  this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -216,7 +214,7 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
         Cursor data = db.rawQuery(query,null);
         return data;
     }
-
+  
     public void deleteProduct(int p_id){
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "DELETE FROM " + TABLE_NAME_2 + " WHERE " + TABLE_2_COLUMNS[0] + " = '" + p_id + "'";
@@ -259,5 +257,6 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
     public Cursor getImgPath(){
         return null;
     }
+
 
 }

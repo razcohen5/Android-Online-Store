@@ -21,11 +21,19 @@ import com.example.yakirlaptop.ssproject.ObjectClasses.Supplier;
 import com.example.yakirlaptop.ssproject.R;
 import com.example.yakirlaptop.ssproject.Singletons.Server;
 import com.example.yakirlaptop.ssproject.Singletons.UserHolder;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Toast;
+import com.example.yakirlaptop.ssproject.DatabaseAPI.DatabaseOpenHelper;
+import com.example.yakirlaptop.ssproject.R;
+import com.example.yakirlaptop.ssproject.Singletons.Server;
+
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+
 
 public class AddProductActivity extends AppCompatActivity {
     EditText productname;
@@ -42,6 +50,7 @@ public class AddProductActivity extends AppCompatActivity {
     ArrayList<String> suppliers;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +65,7 @@ public class AddProductActivity extends AppCompatActivity {
         cw = new ContextWrapper(getApplicationContext());
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, suppliers);
         dropdown.setAdapter(adapter);
+
     }
 
     public void addPicture(View view){
@@ -109,6 +119,7 @@ public class AddProductActivity extends AppCompatActivity {
             }
         }
     }
+
     private void saveToInternalStorage(Bitmap bitmapImage){
         FileOutputStream fos = null;
         try {

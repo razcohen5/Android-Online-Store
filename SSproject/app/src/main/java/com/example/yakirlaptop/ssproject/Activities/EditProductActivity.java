@@ -13,11 +13,11 @@ import com.example.yakirlaptop.ssproject.Singletons.UserHolder;
 
 public class EditProductActivity extends AppCompatActivity {
     private int p_id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_product);
-
         setTitle("Edit Product");
         Intent intent = getIntent();
         p_id = intent.getIntExtra("p_id",0);

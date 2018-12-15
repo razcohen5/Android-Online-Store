@@ -50,6 +50,7 @@ public class ChangeProductActivity extends AppCompatActivity {
         Cursor data1 = dbhelper.getPrice();
         Cursor data2 = dbhelper.getQuantity();
         Cursor data3 = dbhelper.getImgPath();
+
         String price = null;
         String quantity = null;
         imgPath = null;
