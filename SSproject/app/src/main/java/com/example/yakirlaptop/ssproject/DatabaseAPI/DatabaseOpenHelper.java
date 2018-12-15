@@ -166,19 +166,39 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
         return product;
     }
 
-    public boolean editProduct(int p_id,String name,int price,int quantity, String image){
-        SQLiteDatabase db =  this.getWritableDatabase();
-        ContentValues cv = new ContentValues();
-        cv.put(TABLE_2_COLUMNS[3],price);
-        cv.put(TABLE_2_COLUMNS[4],quantity);
-        cv.put(TABLE_2_COLUMNS[5],image);
-
-        long result = db.update(TABLE_NAME_2,cv,TABLE_2_COLUMNS[0]+"='"+p_id+"'",null);
-        if (result == -1){
-            return false;
+    public Product getProductById(int p_id)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Product product = null;
+        String query = "SELECT * FROM "+TABLE_NAME_2+" WHERE "+TABLE_2_COLUMNS[0]+" = '"+p_id+"'";
+        Cursor res = db.rawQuery(query, null);
+        if (res.getCount() == 1)
+        {
+            res.moveToFirst();
+            product = new Product(res.getInt(0),
+                    res.getInt(1),
+                    res.getString(2),
+                    res.getInt(3),
+                    res.getInt(4),
+                    res.getString(5));
         }
-        return true;
+        res.close();
+        return product;
     }
+
+//    public boolean editProduct(int p_id,String name,int price,int quantity, String image){
+//        SQLiteDatabase db =  this.getWritableDatabase();
+//        ContentValues cv = new ContentValues();
+//        cv.put(TABLE_2_COLUMNS[3],price);
+//        cv.put(TABLE_2_COLUMNS[4],quantity);
+//        cv.put(TABLE_2_COLUMNS[5],image);
+//
+//        long result = db.update(TABLE_NAME_2,cv,TABLE_2_COLUMNS[0]+"='"+p_id+"'",null);
+//        if (result == -1){
+//            return false;
+//        }
+//        return true;
+//    }
 
     public boolean addProduct(int s_id, String name, int price ,int quantity , String image){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -247,16 +267,35 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
         return imgPath;
     }
 
-    public Cursor getPrice(){
-        return null;
+    public Supplier getSupplierById(int s_id)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Supplier supplier = null;
+        String query = "SELECT * FROM "+TABLE_NAME_3+" WHERE "+TABLE_3_COLUMNS[0]+" = '"+s_id+"'";
+        Cursor res = db.rawQuery(query, null);
+        if (res.getCount() == 1)
+        {
+            res.moveToFirst();
+            supplier = new Supplier(res.getInt(0),
+                    res.getString(1),
+                    res.getString(2),
+                    res.getString(3),
+                    res.getString(4));
+        }
+        res.close();
+        return supplier;
     }
 
-    public Cursor getQuantity(){
-        return null;
-    }
-    public Cursor getImgPath(){
-        return null;
-    }
+//    public Cursor getPrice(){
+//        return null;
+//    }
+//
+//    public Cursor getQuantity(){
+//        return null;
+//    }
+//    public Cursor getImgPath(){
+//        return null;
+//    }
 
 
 }

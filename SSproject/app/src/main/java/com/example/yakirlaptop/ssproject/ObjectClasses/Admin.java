@@ -53,4 +53,10 @@ public class Admin extends User {
     {
         return Server.getServer().addProduct(s_id,name,price,quantity,image);
     }
+
+    public void order(int p_id,int quantity)
+    {
+        Server.getServer().afterOrderUpdate(p_id,quantity);
+    }
+
 }

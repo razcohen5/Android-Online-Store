@@ -1,5 +1,7 @@
 package com.example.yakirlaptop.ssproject.ObjectClasses;
 
+import com.example.yakirlaptop.ssproject.Singletons.Server;
+
 public class Customer extends User {
     private String email;
     private String creditcard;
@@ -34,5 +36,15 @@ public class Customer extends User {
 
     public void setCart(Cart cart) {
         this.cart = cart;
+    }
+
+    public void addToCart(Product p)
+    {
+        cart.getProducts().add(p);
+    }
+
+    public void makePayment()
+    {
+        Server.getServer().afterPurchaseUpdate(cart);
     }
 }

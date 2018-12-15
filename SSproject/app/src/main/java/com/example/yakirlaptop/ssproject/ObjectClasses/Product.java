@@ -25,6 +25,16 @@ public class Product {
         this.image = image;
     }
 
+    public Product(Product other,int quantity)
+    {
+        this.p_id = other.p_id;
+        this.s_id = other.s_id;
+        this.name = other.name;
+        this.price = other.price;
+        this.quantity = quantity;
+        this.image = other.image;
+    }
+
     public int getP_id() {
         return p_id;
     }
@@ -71,5 +81,10 @@ public class Product {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    @Override
+    public String toString() {
+        return "Product: " + name + "  Price: " + price + "  Quantity: " + quantity ;
     }
 }

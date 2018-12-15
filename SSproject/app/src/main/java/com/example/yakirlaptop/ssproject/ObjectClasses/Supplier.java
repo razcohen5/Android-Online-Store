@@ -62,4 +62,14 @@ public class Supplier {
     public void setCompany(String company) {
         this.company = company;
     }
+
+    @Override
+    public String toString() {
+        return "Supplier Details: " +
+                "\ns_id: " + s_id +
+                "\nName: " + name +
+                "\nPhone: " + phone +
+                "\nEmail: " + email +
+                "\nCompany: " + company;
+    }
 }

@@ -6,7 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.yakirlaptop.ssproject.DatabaseAPI.DatabaseOpenHelper;
+import com.example.yakirlaptop.ssproject.ObjectClasses.Cart;
 import com.example.yakirlaptop.ssproject.ObjectClasses.Customer;
+import com.example.yakirlaptop.ssproject.ObjectClasses.Product;
 import com.example.yakirlaptop.ssproject.ObjectClasses.Supplier;
 import com.example.yakirlaptop.ssproject.ObjectClasses.User;
 
@@ -53,7 +55,7 @@ public class Server {
 
     public ArrayList<String> getTableList(String tablename)//return list for listview
     {
-        ArrayList<String> listdata = new ArrayList<>();;
+        ArrayList<String> listdata = new ArrayList<>();
         if(tablename.equals("users"))
         {
             Cursor data = db.getUsersTable();
@@ -148,5 +150,42 @@ public class Server {
         }
         db.deleteAllProducts();
 
+    }
+
+    public ArrayList<String> getShopProductsList()//return list for listview
+    {
+        ArrayList<String> listdata = new ArrayList<>();
+        Cursor data = db.getProductsTable();
+        while(data.moveToNext())
+            listdata.add("Product_id: "+data.getInt(0)+"\nName: "+data.getString(2)+"\nPrice: "+data.getInt(3)+"\nQuantity: " +data.getInt(4));
+        return listdata;
+    }
+
+    public Product getProductById(int p_id)
+    {
+        return db.getProductById(p_id);
+    }
+
+    public void afterPurchaseUpdate(Cart cart)
+    {
+        ArrayList<Product> products = cart.getProducts();
+        for(Product product: products)
+        {
+            int prequantity = db.getProductById(product.getP_id()).getQuantity();
+            db.deleteProduct(product.getP_id());
+            db.addProduct(product.getS_id(),product.getName(),product.getPrice(),prequantity-product.getQuantity(),product.getImage());
+        }
+    }
+
+    public Supplier getSupplierById(int s_id)
+    {
+        return db.getSupplierById(s_id);
+    }
+
+    public void afterOrderUpdate(int p_id,int quantity)
+    {
+        Product product = db.getProductById(p_id);
+        db.deleteProduct(p_id);
+        db.addProduct(product.getS_id(),product.getName(),product.getPrice(),product.getQuantity()+quantity,product.getImage());
     }
 }

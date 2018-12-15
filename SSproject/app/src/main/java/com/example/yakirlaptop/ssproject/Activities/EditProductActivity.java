@@ -31,6 +31,14 @@ public class EditProductActivity extends AppCompatActivity {
 //        startActivity(intent);
 //    }
 
+    public void order(View view)
+    {
+        Intent intent = new Intent(getApplicationContext(), OrderProductActivity.class);
+        intent.putExtra("p_id",p_id);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+    }
+
     public void delete(View view){
         UserHolder.getUserHolder().getAdmin().deleteProduct(p_id);
         Toast.makeText(this,"Product deleted." ,Toast.LENGTH_LONG).show();
