@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.example.yakirlaptop.ssproject.ObjectClasses.Admin;
 import com.example.yakirlaptop.ssproject.ObjectClasses.Customer;
+import com.example.yakirlaptop.ssproject.ObjectClasses.Product;
 import com.example.yakirlaptop.ssproject.ObjectClasses.User;
 import com.example.yakirlaptop.ssproject.ObjectClasses.Supplier;
 
@@ -20,9 +21,6 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
     private static final String[] TABLE_2_COLUMNS = {new String("p_id"),new String("s_id"),new String("name"),new String("price"),new String("quantity"),new String("image")};
     private static final String TABLE_NAME_3 = "suppliers";
     private static final String[] TABLE_3_COLUMNS = {new String("s_id"),new String("name"),new String("phone"),new String("email"),new String("company")};
-    private static final String adminUsername = "admin";
-    private static final String adminPassword = "admin";
-    private static final String adminName = "admin";
 
     public DatabaseOpenHelper(Context context) {
         super(context, "db",null, 1);
@@ -149,6 +147,25 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
         return true;
     }
 
+    public Product getProductByName(String name){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Product product = null;
+        String query = "SELECT * FROM "+TABLE_NAME_2+" WHERE "+TABLE_2_COLUMNS[2]+" = '"+name+"'";
+        Cursor res = db.rawQuery(query, null);
+        if (res.getCount() == 1)
+        {
+            res.moveToFirst();
+            product = new Product(res.getInt(0),
+                    res.getInt(1),
+                    res.getString(2),
+                    res.getInt(3),
+                    res.getInt(4),
+                    res.getString(5));
+        }
+        res.close();
+        return product;
+    }
+
     public boolean editProduct(int p_id,String name,int price,int quantity, String image){
         SQLiteDatabase db =  this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -163,7 +180,7 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
         return true;
     }
 
-    public boolean addProduct(int s_id, String name, String price ,String quantity , String image){
+    public boolean addProduct(int s_id, String name, int price ,int quantity , String image){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(TABLE_2_COLUMNS[1],s_id);
@@ -197,109 +214,49 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
         Cursor data = db.rawQuery(query,null);
         return data;
     }
-
-    public boolean userAlreadyExists(String username){
-        String pass = null;
+  
+    public void deleteProduct(int p_id){
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT "+TABLE_1_COLUMNS[1]+" FROM "+TABLE_NAME_1+" WHERE "+TABLE_1_COLUMNS[0]+" = '"+username+"'";
-        Cursor data = db.rawQuery(query,null);
-        while(data.moveToNext()){
-            pass = data.getString(0);
-        }
-        if (pass == null){
-            return false;
-        }
-        return true;
-    }
-
-    public boolean productAlreadyExists(String product){
-        String price = null;
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT "+TABLE_2_COLUMNS[3]+" FROM "+TABLE_NAME_2+" WHERE "+TABLE_1_COLUMNS[2]+" = '"+product+"'";
-        Cursor data = db.rawQuery(query,null);
-        while(data.moveToNext()){
-            price = data.getString(0);
-        }
-        if (price == null){
-            return false;
-        }
-        return true;
-    }
-
-    public  boolean login(String username, String password){
-        String name  = null;
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT "+TABLE_1_COLUMNS[3]+" FROM "+TABLE_NAME_1+" WHERE "+TABLE_1_COLUMNS[0]+" = '"+username+"' AND "+TABLE_1_COLUMNS[1]+" = '"+ password+"'";
-        Cursor data = db.rawQuery(query,null);
-        while(data.moveToNext()){
-            name = data.getString(0);
-        }
-        if (name == null){
-            return false;
-        }
-        return true;
-    }
-
-    public Cursor getPass(String username){
-        return null;
-    }
-    public Cursor getPrice(String productname){
-        return null;
-    }
-    public Cursor getQuantity(String productname){
-        return null;
-    }
-    public Cursor getImgPath(String productname){
-        return null;
-    }
-    public void delete(String username, String password){
-    }
-    public void deleteProduct(String product,String price){
-    }
-    public void deleteAll(){
+        String query = "DELETE FROM " + TABLE_NAME_2 + " WHERE " + TABLE_2_COLUMNS[0] + " = '" + p_id + "'";
+        db.execSQL(query);
     }
     public void deleteAllProducts(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "DELETE  FROM " + TABLE_NAME_2 ;
+        db.execSQL(query);
     }
 
-//    public Cursor getPass(String username){
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        String query = "SELECT "+COL_1_2+" FROM "+TABLE_NAME_1+" WHERE "+COL_1_1+" = '"+username+"'";
-//        Cursor data = db.rawQuery(query,null);
-//        return data;
-//    }
-//    public Cursor getPrice(String productname){
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        String query = "SELECT "+COL_2_2+" FROM "+TABLE_NAME_2+" WHERE "+COL_2_1+" = '"+productname+"'";
-//        Cursor data = db.rawQuery(query,null);
-//        return data;
-//    }
-//    public Cursor getQuantity(String productname){
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        String query = "SELECT "+COL_2_3+" FROM "+TABLE_NAME_2+" WHERE "+COL_2_1+" = '"+productname+"'";
-//        Cursor data = db.rawQuery(query,null);
-//        return data;
-//    }
-//    public Cursor getImgPath(String productname){
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        String query = "SELECT "+COL_2_4+" FROM "+TABLE_NAME_2+" WHERE "+COL_2_1+" = '"+productname+"'";
-//        Cursor data = db.rawQuery(query,null);
-//        return data;
-//    }
-//
-//
+    public Cursor getAllImgPath(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT "+TABLE_2_COLUMNS[5]+" FROM "+TABLE_NAME_2;
+        Cursor data = db.rawQuery(query,null);
+        return data;
+    }
 
-//    public void deleteProduct(String product,String price){
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        String query = "DELETE FROM " + TABLE_NAME_2 + " WHERE " + COL_2_1 + " = '" + product + "'" + " AND " + COL_2_2 + " = '" + price + "'";
-//        db.execSQL(query);
-//    }
-//
+    public String getImgPathById(int p_id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String imgPath = null;
+        String query = "SELECT "+TABLE_2_COLUMNS[5]+" FROM "+TABLE_NAME_2+" WHERE "+TABLE_2_COLUMNS[0]+" = '"+p_id+"'";
+        Cursor res = db.rawQuery(query,null);
+        if (res.getCount() == 1)
+        {
+            res.moveToFirst();
+            imgPath = res.getString(0);
+        }
+        res.close();
+        return imgPath;
+    }
 
-//
-//    public void deleteAllProducts(){
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        String query = "DELETE  FROM " + TABLE_NAME_2 ;
-//        db.execSQL(query);
-//    }
+    public Cursor getPrice(){
+        return null;
+    }
+
+    public Cursor getQuantity(){
+        return null;
+    }
+    public Cursor getImgPath(){
+        return null;
+    }
+
 
 }

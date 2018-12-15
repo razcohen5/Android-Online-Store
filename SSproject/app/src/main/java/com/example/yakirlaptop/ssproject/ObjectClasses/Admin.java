@@ -32,13 +32,25 @@ public class Admin extends User {
         Server.getServer().deleteSupplier(s_id);
     }
 
-    public void deleteAllSuppliers()
+    public void deleteAllSuppliers() { Server.getServer().deleteAllSuppliers(); }
+
+    public void deleteProduct(int p_id)
     {
-        Server.getServer().deleteAllSuppliers();
+        Server.getServer().deleteProduct(p_id);
+    }
+
+    public void deleteAllProducts()
+    {
+        Server.getServer().deleteAllProducts();
     }
 
     public boolean addSupplier(String name,String phone,String email,String company)
     {
         return Server.getServer().addSupplier(name,phone,email,company);
+    }
+
+    public boolean addProduct(int s_id, String name, int price, int quantity, String image)
+    {
+        return Server.getServer().addProduct(s_id,name,price,quantity,image);
     }
 }

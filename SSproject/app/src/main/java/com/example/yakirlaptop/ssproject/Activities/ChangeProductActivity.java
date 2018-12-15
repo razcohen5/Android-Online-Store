@@ -47,9 +47,10 @@ public class ChangeProductActivity extends AppCompatActivity {
         dbhelper = new DatabaseOpenHelper(this);
         Intent intent = getIntent();
         product = intent.getStringExtra("productname");
-        Cursor data1 = dbhelper.getPrice(product);
-        Cursor data2 = dbhelper.getQuantity(product);
-        Cursor data3 = dbhelper.getImgPath(product);
+        Cursor data1 = dbhelper.getPrice();
+        Cursor data2 = dbhelper.getQuantity();
+        Cursor data3 = dbhelper.getImgPath();
+
         String price = null;
         String quantity = null;
         imgPath = null;

@@ -10,6 +10,7 @@ import com.example.yakirlaptop.ssproject.ObjectClasses.Customer;
 import com.example.yakirlaptop.ssproject.ObjectClasses.Supplier;
 import com.example.yakirlaptop.ssproject.ObjectClasses.User;
 
+import java.io.File;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
@@ -73,7 +74,44 @@ public class Server {
         }
         return listdata;
     }
+  
+    public ArrayList<String> getSuppliersNames(){
+        ArrayList<String> listdata = new ArrayList<>();;
+        Cursor data = db.getSuppliersTable();
+        while(data.moveToNext())
+            listdata.add(data.getString(1)+", "+data.getString(4));
+        return listdata;
+    }
 
+    public ArrayList<String> getAllImgPath(){
+        ArrayList<String> listdata = new ArrayList<>();;
+        Cursor data = db.getAllImgPath();
+        while(data.moveToNext())
+            listdata.add(data.getString(0));
+        return listdata;
+    }
+
+    public Supplier getSupplierByName(String name)
+    {
+        return db.getSupplierByName(name);
+    }
+
+    public boolean addSupplier(String name,String phone,String email,String company)
+    {
+        if (server.db.getSupplierByName(name)!=null) //already exists user with that username
+            return false;
+        server.db.addSupplier(name,phone,email,company);
+        return true;
+    }
+
+    public boolean addProduct(int s_id, String name, int price, int quantity, String image)
+    {
+        if (server.db.getProductByName(name)!=null) //already exists user with that username
+            return false;
+        server.db.addProduct(s_id,name,price,quantity,image);
+        return true;
+    }
+  
     public void deleteUser(String username)
     {
         db.deleteUser(username);
@@ -94,16 +132,21 @@ public class Server {
         db.deleteAllSuppliers();
     }
 
-    public Supplier getSupplierByName(String name)
+    public void deleteProduct(int p_id)
     {
-        return db.getSupplierByName(name);
+        File file = new File(db.getImgPathById(p_id));
+        file.delete();
+        db.deleteProduct(p_id);
     }
 
-    public boolean addSupplier(String name,String phone,String email,String company)
-    {
-        if (server.db.getSupplierByName(name)!=null) //already exists user with that username
-            return false;
-        server.db.addSupplier(name,phone,email,company);
-        return true;
+    public void deleteAllProducts() {
+        ArrayList<String> imgPaths = getAllImgPath();
+        File file;
+        for (String img : imgPaths) {
+            file = new File(img);
+            file.delete();
+        }
+        db.deleteAllProducts();
+
     }
 }
