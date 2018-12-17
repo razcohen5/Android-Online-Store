@@ -17,15 +17,10 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.yakirlaptop.ssproject.DatabaseAPI.DatabaseOpenHelper;
-<<<<<<< HEAD:SSproject/app/src/main/java/com/example/yakirlaptop/ssproject/Activities/AddProductActivity.java
 import com.example.yakirlaptop.ssproject.ObjectClasses.Supplier;
 import com.example.yakirlaptop.ssproject.R;
 import com.example.yakirlaptop.ssproject.Singletons.Server;
 import com.example.yakirlaptop.ssproject.Singletons.UserHolder;
-=======
-import com.example.yakirlaptop.ssproject.R;
-import com.example.yakirlaptop.ssproject.Singletons.Server;
->>>>>>> upstream/master:SSproject/app/src/main/java/com/example/yakirlaptop/ssproject/Activities/AddProductActivity.java
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -40,15 +35,12 @@ public class AddProductActivity extends AppCompatActivity {
     ImageView imageView;
     Bitmap bitmap;
     String imgPath = null;
-<<<<<<< HEAD:SSproject/app/src/main/java/com/example/yakirlaptop/ssproject/Activities/AddProductActivity.java
     Spinner dropdown;
     File directory;
     File mypath;
     ContextWrapper cw;
     ArrayList<String> suppliers;
 
-=======
->>>>>>> upstream/master:SSproject/app/src/main/java/com/example/yakirlaptop/ssproject/Activities/AddProductActivity.java
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,15 +50,12 @@ public class AddProductActivity extends AppCompatActivity {
         productname = findViewById(R.id.ETname);
         price = findViewById(R.id.ETprice);
         quantity = findViewById(R.id.ETquantity);
-<<<<<<< HEAD:SSproject/app/src/main/java/com/example/yakirlaptop/ssproject/Activities/AddProductActivity.java
         imageView = findViewById(R.id.imageView);
         dropdown = findViewById(R.id.spinner1);
         suppliers = Server.getServer().getSuppliersNames();
         cw = new ContextWrapper(getApplicationContext());
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, suppliers);
         dropdown.setAdapter(adapter);
-=======
->>>>>>> upstream/master:SSproject/app/src/main/java/com/example/yakirlaptop/ssproject/Activities/AddProductActivity.java
     }
 
     public void addPicture(View view){
@@ -80,18 +69,11 @@ public class AddProductActivity extends AppCompatActivity {
         String newProduct = productname.getText().toString();
         String newPrice = price.getText().toString();
         String newQuantity = quantity.getText().toString();
-<<<<<<< HEAD:SSproject/app/src/main/java/com/example/yakirlaptop/ssproject/Activities/AddProductActivity.java
         int position = dropdown.getSelectedItemPosition();
         if (newProduct.length() == 0 || newPrice.length() == 0 || newQuantity.length() == 0 || imageView.getDrawable() == null|| position == dropdown.INVALID_POSITION)
                 Toast.makeText(this,"One or more fields are invalid.",Toast.LENGTH_LONG).show();
         else if(Integer.parseInt(newPrice)<=0 || Integer.parseInt(newQuantity) <=0)
             Toast.makeText(this,"Price and quantity must be positive.",Toast.LENGTH_LONG).show();
-=======
-        String newImg = imgPath;
-        if (newProduct.length() == 0 || newPrice.length() == 0 || newQuantity.length() == 0 || newImg == null){
-            Toast.makeText(this,"Please fill all of the above",Toast.LENGTH_LONG).show();
-        }
->>>>>>> upstream/master:SSproject/app/src/main/java/com/example/yakirlaptop/ssproject/Activities/AddProductActivity.java
         else{
             directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
             // Create imageDir
@@ -102,12 +84,8 @@ public class AddProductActivity extends AppCompatActivity {
                 Toast.makeText(this, "Product already exists!", Toast.LENGTH_LONG).show();
             }
             else{
-<<<<<<< HEAD:SSproject/app/src/main/java/com/example/yakirlaptop/ssproject/Activities/AddProductActivity.java
                 saveToInternalStorage(bitmap);
                 Toast.makeText(this,"Product added.",Toast.LENGTH_LONG).show();
-=======
-                //addData(newProduct,newPrice,newQuantity,newImg);
->>>>>>> upstream/master:SSproject/app/src/main/java/com/example/yakirlaptop/ssproject/Activities/AddProductActivity.java
                 Intent intent = new Intent(getApplicationContext(),ListProductsActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
@@ -115,20 +93,6 @@ public class AddProductActivity extends AppCompatActivity {
         }
     }
 
-<<<<<<< HEAD:SSproject/app/src/main/java/com/example/yakirlaptop/ssproject/Activities/AddProductActivity.java
-=======
-//    public void addData(String product, String price , String quantity, String img){
-//        boolean insertData = dbhelper.addProducts(product,price,quantity,img);
-//        if (insertData){
-//            Toast.makeText(this,"Data successfully inserted",Toast.LENGTH_LONG).show();
-//        }
-//        else {
-//            Toast.makeText(this,"Something went wrong",Toast.LENGTH_LONG).show();
-//        }
-//
-//
-//    }
->>>>>>> upstream/master:SSproject/app/src/main/java/com/example/yakirlaptop/ssproject/Activities/AddProductActivity.java
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -161,13 +125,6 @@ public class AddProductActivity extends AppCompatActivity {
             }
         }
 
-    }
-
-    @Override
-    public void onBackPressed() {
-        Intent intent = new Intent (getApplicationContext(), AdminActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
     }
 
     @Override

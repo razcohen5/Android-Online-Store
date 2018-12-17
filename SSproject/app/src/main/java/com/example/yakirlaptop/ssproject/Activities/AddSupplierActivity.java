@@ -45,9 +45,14 @@ public class AddSupplierActivity extends AppCompatActivity {
                     Toast.makeText(this, "Name is already taken.", Toast.LENGTH_LONG).show();
                 else {
                     Toast.makeText(this, "Supplier added.", Toast.LENGTH_LONG).show();
+<<<<<<< HEAD
                     Intent intent = new Intent(getApplicationContext(), ListSuppliersActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
+=======
+                    Intent i = new Intent(getApplicationContext(), AdminActivity.class);
+                    startActivity(i);
+>>>>>>> upstream/master
                 }
             }
         }

@@ -32,6 +32,7 @@ public class Admin extends User {
         Server.getServer().deleteSupplier(s_id);
     }
 
+<<<<<<< HEAD
     public void deleteAllSuppliers() { Server.getServer().deleteAllSuppliers(); }
 
     public void deleteProduct(int p_id)
@@ -42,15 +43,23 @@ public class Admin extends User {
     public void deleteAllProducts()
     {
         Server.getServer().deleteAllProducts();
+=======
+    public void deleteAllSuppliers()
+    {
+        Server.getServer().deleteAllSuppliers();
+>>>>>>> upstream/master
     }
 
     public boolean addSupplier(String name,String phone,String email,String company)
     {
         return Server.getServer().addSupplier(name,phone,email,company);
     }
+<<<<<<< HEAD
 
     public boolean addProduct(int s_id, String name, int price, int quantity, String image)
     {
         return Server.getServer().addProduct(s_id,name,price,quantity,image);
     }
+=======
+>>>>>>> upstream/master
 }

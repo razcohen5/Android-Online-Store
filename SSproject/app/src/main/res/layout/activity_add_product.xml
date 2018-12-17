@@ -4,8 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
     tools:context=".Activities.AddProductActivity"
     tools:layout_editor_absoluteY="81dp">
+=======
+    tools:context=".Activities.AddProductActivity">
+>>>>>>> upstream/master
 
     <EditText
         android:id="@+id/ETname"
@@ -80,6 +84,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/BaddPic" />
 
+<<<<<<< HEAD
     <Spinner
         android:id="@+id/spinner1"
         android:layout_width="217dp"
@@ -91,4 +96,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ETquantity" />
 
+=======
+>>>>>>> upstream/master
 </android.support.constraint.ConstraintLayout>

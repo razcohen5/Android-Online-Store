@@ -10,7 +10,10 @@ import com.example.yakirlaptop.ssproject.ObjectClasses.Customer;
 import com.example.yakirlaptop.ssproject.ObjectClasses.Supplier;
 import com.example.yakirlaptop.ssproject.ObjectClasses.User;
 
+<<<<<<< HEAD
 import java.io.File;
+=======
+>>>>>>> upstream/master
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
@@ -75,6 +78,7 @@ public class Server {
         return listdata;
     }
 
+<<<<<<< HEAD
     public ArrayList<String> getSuppliersNames(){
         ArrayList<String> listdata = new ArrayList<>();;
         Cursor data = db.getSuppliersTable();
@@ -112,6 +116,8 @@ public class Server {
         return true;
     }
 
+=======
+>>>>>>> upstream/master
     public void deleteUser(String username)
     {
         db.deleteUser(username);
@@ -132,6 +138,7 @@ public class Server {
         db.deleteAllSuppliers();
     }
 
+<<<<<<< HEAD
     public void deleteProduct(int p_id)
     {
         File file = new File(db.getImgPathById(p_id));
@@ -147,5 +154,18 @@ public class Server {
             file.delete();
         }
         db.deleteAllProducts();
+=======
+    public Supplier getSupplierByName(String name)
+    {
+        return db.getSupplierByName(name);
+    }
+
+    public boolean addSupplier(String name,String phone,String email,String company)
+    {
+        if (server.db.getSupplierByName(name)!=null) //already exists user with that username
+            return false;
+        server.db.addSupplier(name,phone,email,company);
+        return true;
+>>>>>>> upstream/master
     }
 }

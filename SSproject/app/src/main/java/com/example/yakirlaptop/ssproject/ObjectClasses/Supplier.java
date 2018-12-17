@@ -62,5 +62,8 @@ public class Supplier {
     public void setCompany(String company) {
         this.company = company;
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> upstream/master
 }
