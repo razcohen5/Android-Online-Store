@@ -55,39 +55,10 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "One or more fields are missing.", Toast.LENGTH_LONG).show();
     }
 
-//    public void enterBuyer(View view){
-//        String newUser = usernameET.getText().toString();
-//        String newPass = passwordET.getText().toString();
-//        if( (newUser.length() != 0 && newPass.length() != 0)){
-//           if(dbhelper.login(newUser,newPass)){
-//               Intent intent  = new Intent(getApplicationContext(), CustomerActivity.class);
-//               startActivity(intent);
-//           }
-//           else{
-//
-//               Toast.makeText(this, "Wrong username or password", Toast.LENGTH_LONG).show();
-//           }
-//        }
-//        else {
-//            Toast.makeText(this, "You must put something in the text field", Toast.LENGTH_LONG).show();
-//        }
-//
-//    }
     public void signup(View view){
         Intent intent  = new Intent(getApplicationContext(),SignUpActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
-
-
-
-
-
-    public void admin(View view){
-            Intent intent = new Intent(getApplicationContext(), AdminActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-    }
-
 
 }

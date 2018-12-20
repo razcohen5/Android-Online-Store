@@ -46,5 +46,6 @@ public class Customer extends User {
     public void makePayment()
     {
         Server.getServer().afterPurchaseUpdate(cart);
+        cart.emptyCart();
     }
 }

@@ -20,7 +20,7 @@ public class Server {
     private static final Server server = new Server();
     private DatabaseOpenHelper db;
 
-    private Server() {}//create admin default account
+    private Server() { }//create admin default account
     public static Server getServer() {
         return server;
     }

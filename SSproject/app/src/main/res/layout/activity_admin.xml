@@ -8,6 +8,17 @@
     tools:layout_editor_absoluteY="81dp">
 
     <Button
+        android:id="@+id/BchangePass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="39dp"
+        android:onClick="changePass"
+        android:text="change password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/baddS" />
+
+    <Button
         android:id="@+id/Bviewdata"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -65,8 +76,8 @@
         android:id="@+id/baddS"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="25dp"
-        android:layout_marginRight="25dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
         android:onClick="addSupplier"
         android:text="ADD SUPPLIER"
         app:layout_constraintBottom_toBottomOf="@+id/Bviewsuppliers"

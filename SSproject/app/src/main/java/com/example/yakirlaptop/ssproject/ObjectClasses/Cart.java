@@ -1,5 +1,8 @@
 package com.example.yakirlaptop.ssproject.ObjectClasses;
 
+import com.example.yakirlaptop.ssproject.Singletons.Server;
+import com.example.yakirlaptop.ssproject.Singletons.UserHolder;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -58,5 +61,16 @@ public class Cart {
     public boolean isEmpty()
     {
         return products.isEmpty();
+    }
+
+    public void emptyCart() { products.removeAll(products);}
+
+    public void deleteById(int p_id){
+        for (Product p:products){
+            if (p.getP_id() == p_id){
+                products.remove(p);
+                break;
+            }
+        }
     }
 }

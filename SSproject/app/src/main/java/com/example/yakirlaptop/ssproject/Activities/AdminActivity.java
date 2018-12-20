@@ -48,6 +48,13 @@ public class AdminActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void changePass(View view){
+        Intent intent = new Intent (getApplicationContext(), EditAdminPassword.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+
+    }
+
     @Override
     public void onBackPressed() {
         Intent intent = new Intent (getApplicationContext(), MainActivity.class);
