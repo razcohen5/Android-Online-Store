@@ -45,6 +45,24 @@ public class CartActivity extends AppCompatActivity {
         ArrayList<Product> cart = UserHolder.getUserHolder().getCustomer().getCart().getProducts();
         final ListAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,cart);
         lv.setAdapter(adapter);
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String p_idString = extractname(adapterView.getItemAtPosition(i).toString());
+                int p_id = Integer.parseInt(p_idString);
+                Intent intent = new Intent(getApplicationContext(), EditCartActivity.class);
+                intent.putExtra("p_id",p_id);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private String extractname(String name) {
+        String[] split = name.split("\n");
+        String[] split2 = split[0].split(" ");
+
+        return split2[1];
     }
 
     public void makePayment(View view)

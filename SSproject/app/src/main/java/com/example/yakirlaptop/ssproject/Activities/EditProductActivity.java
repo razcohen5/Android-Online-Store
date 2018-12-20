@@ -23,13 +23,6 @@ public class EditProductActivity extends AppCompatActivity {
         p_id = intent.getIntExtra("p_id",0);
         Server.getServer().setContext(this);
     }
-//
-//    public void changeProduct(View view){
-//        Intent intent = new Intent(getApplicationContext(),ChangeProductActivity.class);
-//        intent.putExtra("productname",p_id);
-//        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//        startActivity(intent);
-//    }
 
     public void order(View view)
     {

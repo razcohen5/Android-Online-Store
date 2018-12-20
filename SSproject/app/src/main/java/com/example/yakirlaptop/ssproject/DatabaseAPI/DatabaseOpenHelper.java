@@ -96,7 +96,7 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
 
     public void deleteAllUsers(){
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "DELETE  FROM " + TABLE_NAME_1 ;
+        String query = "DELETE  FROM " + TABLE_NAME_1 +" WHERE " + TABLE_1_COLUMNS[2] + " = '0'";
         db.execSQL(query);
     }
 
@@ -186,20 +186,6 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
         return product;
     }
 
-//    public boolean editProduct(int p_id,String name,int price,int quantity, String image){
-//        SQLiteDatabase db =  this.getWritableDatabase();
-//        ContentValues cv = new ContentValues();
-//        cv.put(TABLE_2_COLUMNS[3],price);
-//        cv.put(TABLE_2_COLUMNS[4],quantity);
-//        cv.put(TABLE_2_COLUMNS[5],image);
-//
-//        long result = db.update(TABLE_NAME_2,cv,TABLE_2_COLUMNS[0]+"='"+p_id+"'",null);
-//        if (result == -1){
-//            return false;
-//        }
-//        return true;
-//    }
-
     public boolean addProduct(int s_id, String name, int price ,int quantity , String image){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -286,16 +272,6 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
         return supplier;
     }
 
-//    public Cursor getPrice(){
-//        return null;
-//    }
-//
-//    public Cursor getQuantity(){
-//        return null;
-//    }
-//    public Cursor getImgPath(){
-//        return null;
-//    }
 
 
 }
