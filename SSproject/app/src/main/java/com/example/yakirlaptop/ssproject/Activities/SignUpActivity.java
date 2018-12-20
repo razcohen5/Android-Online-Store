@@ -46,35 +46,15 @@ public class SignUpActivity extends AppCompatActivity {
                 if(getServer().register(newUsername,newPass,0,newName,newMail,newCredit)==true)
                 {
                     Toast.makeText(this,"Registered.",Toast.LENGTH_LONG).show();
-<<<<<<< HEAD
                     Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
-=======
-                    Intent i = new Intent(getApplicationContext(),MainActivity.class);
-                    startActivity(i);
->>>>>>> upstream/master
                 }
                 else
                     Toast.makeText(this,"Username is already taken.",Toast.LENGTH_LONG).show();
         }
     }
 
-<<<<<<< HEAD
-=======
-//    public void addData(String username, String password , String name, String email, String creditcard){
-//        boolean insertData = dbhelper.addUser(username,password,name,email,creditcard);
-//        if (insertData){
-//            Toast.makeText(this,"Data successfully inserted",Toast.LENGTH_LONG).show();
-//        }
-//        else {
-//            Toast.makeText(this,"Something went wrong",Toast.LENGTH_LONG).show();
-//        }
-//
-//
-//    }
-
->>>>>>> upstream/master
     public void signup(View view){
         Intent intent  = new Intent(getApplicationContext(),SignUpActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

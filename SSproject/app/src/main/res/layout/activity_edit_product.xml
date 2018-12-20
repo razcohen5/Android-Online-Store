@@ -8,35 +8,43 @@
     tools:layout_editor_absoluteY="81dp">
 
     <Button
-        android:id="@+id/Beditproduct"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="108dp"
-        android:layout_marginEnd="115dp"
-        android:layout_marginRight="115dp"
-        android:onClick="changeProduct"
-        android:text="edit product"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/Bdelete2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="15dp"
+        android:onClick="delete"
+        android:text="delete"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/Bdeleteall2"
+        app:layout_constraintEnd_toEndOf="@+id/Bdeleteall2"
+        app:layout_constraintStart_toStartOf="@+id/Bdeleteall2"
+        app:layout_constraintTop_toBottomOf="@+id/Border" />
+
+    <Button
+        android:id="@+id/Border"
+        android:layout_width="0dp"
+        android:layout_height="87dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="16dp"
+        android:onClick="order"
+        android:text="Make Order from Supplier"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/Bdelete2"
+        app:layout_constraintEnd_toEndOf="@+id/Bdelete2"
+        app:layout_constraintStart_toStartOf="@+id/Bdelete2"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/Bdelete2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="14dp"
-        android:layout_marginLeft="14dp"
-        android:onClick="delete"
-        android:text="delete"
-        app:layout_constraintStart_toStartOf="@+id/Beditproduct"
-        app:layout_constraintTop_toBottomOf="@+id/Beditproduct" />
-
-    <Button
         android:id="@+id/Bdeleteall2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="152dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="168dp"
         android:onClick="deleteAll"
         android:text="delete all"
-        app:layout_constraintStart_toStartOf="@+id/Bdelete2"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Bdelete2" />
 
 </android.support.constraint.ConstraintLayout>

@@ -36,16 +36,6 @@
         android:layout_marginBottom="211dp" />
 
     <Button
-        android:id="@+id/Badmin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/button"
-        android:layout_alignStart="@+id/button"
-        android:layout_marginTop="74dp"
-        android:onClick="admin"
-        android:text="admin" />
-
-    <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

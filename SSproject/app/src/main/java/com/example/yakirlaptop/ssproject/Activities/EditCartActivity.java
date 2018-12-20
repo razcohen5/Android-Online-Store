@@ -10,36 +10,37 @@ import com.example.yakirlaptop.ssproject.R;
 import com.example.yakirlaptop.ssproject.Singletons.Server;
 import com.example.yakirlaptop.ssproject.Singletons.UserHolder;
 
-public class EditUserActivity extends AppCompatActivity {
-    private String username;
+public class EditCartActivity extends AppCompatActivity {
+    private int p_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_user);
-        setTitle("Edit User");
+        setContentView(R.layout.activity_edit_cart);
+        setTitle("Edit Cart");
         Intent intent = getIntent();
-        username = intent.getStringExtra("username");
-        Server.getServer().setContext(this);
+        p_id = intent.getIntExtra("p_id",0);
     }
 
     public void delete(View view){
-        UserHolder.getUserHolder().getAdmin().deleteUser(username);
-        Toast.makeText(this, "User deleted.", Toast.LENGTH_LONG).show();
-        Intent intent = new Intent (getApplicationContext(), ListUsersActivity.class);
+        UserHolder.getUserHolder().getCustomer().getCart().deleteById(p_id);
+        Toast.makeText(this, "Product deleted from cart.", Toast.LENGTH_LONG).show();
+        Intent intent = new Intent (getApplicationContext(), CartActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
+
     }
+
     public void deleteAll(View view){
-        UserHolder.getUserHolder().getAdmin().deleteAllUsers();
-        Toast.makeText(this,"All users deleted." ,Toast.LENGTH_LONG).show();
-        Intent intent = new Intent (getApplicationContext(), ListUsersActivity.class);
+        UserHolder.getUserHolder().getCustomer().getCart().emptyCart();
+        Toast.makeText(this, "All Products deleted from cart.", Toast.LENGTH_LONG).show();
+        Intent intent = new Intent (getApplicationContext(), CartActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent (getApplicationContext(), ListUsersActivity.class);
+        Intent intent = new Intent (getApplicationContext(), CartActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }

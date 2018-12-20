@@ -6,14 +6,13 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.yakirlaptop.ssproject.DatabaseAPI.DatabaseOpenHelper;
+import com.example.yakirlaptop.ssproject.ObjectClasses.Cart;
 import com.example.yakirlaptop.ssproject.ObjectClasses.Customer;
+import com.example.yakirlaptop.ssproject.ObjectClasses.Product;
 import com.example.yakirlaptop.ssproject.ObjectClasses.Supplier;
 import com.example.yakirlaptop.ssproject.ObjectClasses.User;
 
-<<<<<<< HEAD
 import java.io.File;
-=======
->>>>>>> upstream/master
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
@@ -21,7 +20,7 @@ public class Server {
     private static final Server server = new Server();
     private DatabaseOpenHelper db;
 
-    private Server() {}//create admin default account
+    private Server() { }//create admin default account
     public static Server getServer() {
         return server;
     }
@@ -56,7 +55,7 @@ public class Server {
 
     public ArrayList<String> getTableList(String tablename)//return list for listview
     {
-        ArrayList<String> listdata = new ArrayList<>();;
+        ArrayList<String> listdata = new ArrayList<>();
         if(tablename.equals("users"))
         {
             Cursor data = db.getUsersTable();
@@ -77,8 +76,7 @@ public class Server {
         }
         return listdata;
     }
-
-<<<<<<< HEAD
+  
     public ArrayList<String> getSuppliersNames(){
         ArrayList<String> listdata = new ArrayList<>();;
         Cursor data = db.getSuppliersTable();
@@ -115,9 +113,7 @@ public class Server {
         server.db.addProduct(s_id,name,price,quantity,image);
         return true;
     }
-
-=======
->>>>>>> upstream/master
+  
     public void deleteUser(String username)
     {
         db.deleteUser(username);
@@ -138,7 +134,6 @@ public class Server {
         db.deleteAllSuppliers();
     }
 
-<<<<<<< HEAD
     public void deleteProduct(int p_id)
     {
         File file = new File(db.getImgPathById(p_id));
@@ -154,18 +149,43 @@ public class Server {
             file.delete();
         }
         db.deleteAllProducts();
-=======
-    public Supplier getSupplierByName(String name)
-    {
-        return db.getSupplierByName(name);
+
     }
 
-    public boolean addSupplier(String name,String phone,String email,String company)
+    public ArrayList<String> getShopProductsList()//return list for listview
     {
-        if (server.db.getSupplierByName(name)!=null) //already exists user with that username
-            return false;
-        server.db.addSupplier(name,phone,email,company);
-        return true;
->>>>>>> upstream/master
+        ArrayList<String> listdata = new ArrayList<>();
+        Cursor data = db.getProductsTable();
+        while(data.moveToNext())
+            listdata.add("Product_id: "+data.getInt(0)+"\nName: "+data.getString(2)+"\nPrice: "+data.getInt(3)+"\nQuantity: " +data.getInt(4));
+        return listdata;
+    }
+
+    public Product getProductById(int p_id)
+    {
+        return db.getProductById(p_id);
+    }
+
+    public void afterPurchaseUpdate(Cart cart)
+    {
+        ArrayList<Product> products = cart.getProducts();
+        for(Product product: products)
+        {
+            int prequantity = db.getProductById(product.getP_id()).getQuantity();
+            db.deleteProduct(product.getP_id());
+            db.addProduct(product.getS_id(),product.getName(),product.getPrice(),prequantity-product.getQuantity(),product.getImage());
+        }
+    }
+
+    public Supplier getSupplierById(int s_id)
+    {
+        return db.getSupplierById(s_id);
+    }
+
+    public void afterOrderUpdate(int p_id,int quantity)
+    {
+        Product product = db.getProductById(p_id);
+        db.deleteProduct(p_id);
+        db.addProduct(product.getS_id(),product.getName(),product.getPrice(),product.getQuantity()+quantity,product.getImage());
     }
 }

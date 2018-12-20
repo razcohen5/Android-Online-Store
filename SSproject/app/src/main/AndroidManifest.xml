@@ -27,7 +27,13 @@
         <activity android:name=".Activities.ChangeProductActivity" />
         <activity android:name=".Activities.ListSuppliersActivity" />
         <activity android:name=".Activities.EditSupplierActivity" />
-        <activity android:name=".Activities.AddSupplierActivity"></activity>
+        <activity android:name=".Activities.AddSupplierActivity" />
+        <activity android:name=".Activities.ShopProductsActivity" />
+        <activity android:name=".Activities.EditShopProductActivity" />
+        <activity android:name=".Activities.CartActivity" />
+        <activity android:name=".Activities.OrderProductActivity" />
+        <activity android:name=".Activities.EditCartActivity" />
+        <activity android:name=".Activities.EditAdminPassword"></activity>
     </application>
 
 </manifest>
