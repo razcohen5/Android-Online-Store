@@ -106,11 +106,11 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
         db.execSQL(query);
     }
 
-    public void deleteAllSuppliers(){
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "DELETE  FROM " + TABLE_NAME_3 ;
-        db.execSQL(query);
-    }
+//    public void deleteAllSuppliers(){
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        String query = "DELETE  FROM " + TABLE_NAME_3 ;
+//        db.execSQL(query);
+//    }
 
     public Supplier getSupplierByName(String name)
     {

@@ -25,6 +25,7 @@ public class AddSupplierActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_supplier);
         Server.getServer().setContext(this);
+        setTitle("Add Supplier");
         name = findViewById(R.id.ETname);
         phone = findViewById(R.id.ETphone);
         email = findViewById(R.id.ETemail);

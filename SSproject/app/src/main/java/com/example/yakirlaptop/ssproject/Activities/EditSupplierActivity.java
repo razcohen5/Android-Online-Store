@@ -25,20 +25,27 @@ public class EditSupplierActivity extends AppCompatActivity {
     }
 
     public void delete(View view){
-        UserHolder.getUserHolder().getAdmin().deleteSupplier(s_id);
-        Toast.makeText(this, "Supplier deleted.", Toast.LENGTH_LONG).show();
-        Intent intent = new Intent (getApplicationContext(), ListSuppliersActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
+        if(UserHolder.getUserHolder().getAdmin().deleteSupplier(s_id))
+        {
+            Toast.makeText(this, "Supplier deleted.", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent (getApplicationContext(), ListSuppliersActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+        }
+        else
+            Toast.makeText(this, "Please delete all products supplied by this supplier first.", Toast.LENGTH_LONG).show();
     }
 
     public void deleteAll(View view){
-        UserHolder.getUserHolder().getAdmin().deleteAllSuppliers();
-        Server.getServer().deleteAllUsers();
-        Toast.makeText(this,"All suppliers deleted." ,Toast.LENGTH_LONG).show();
-        Intent intent = new Intent (getApplicationContext(), ListSuppliersActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
+        if(UserHolder.getUserHolder().getAdmin().deleteAllSuppliers())
+        {
+            Toast.makeText(this,"All suppliers deleted." ,Toast.LENGTH_LONG).show();
+            Intent intent = new Intent (getApplicationContext(), ListSuppliersActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+        }
+        else
+            Toast.makeText(this,"Could not delete all suppliers, Please delete all products supplied by this supplier first." ,Toast.LENGTH_LONG).show();
     }
 
     @Override

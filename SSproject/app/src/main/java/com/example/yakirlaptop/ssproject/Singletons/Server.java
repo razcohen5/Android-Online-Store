@@ -124,14 +124,23 @@ public class Server {
         db.deleteAllUsers();
     }
 
-    public void deleteSupplier(int s_id)
+    public boolean deleteSupplier(int s_id)//delete only if there are no products supplied by this supplier in the store
     {
+        Cursor cursor = db.getProductsTable();
+        while(cursor.moveToNext())
+            if(cursor.getInt(1)==s_id)
+                return false;
         db.deleteSupplier(s_id);
+        return true;
     }
 
-    public void deleteAllSuppliers()
+    public boolean deleteAllSuppliers()
     {
-        db.deleteAllSuppliers();
+        Cursor cursor = db.getSuppliersTable();
+        while(cursor.moveToNext())
+            if(!deleteSupplier(cursor.getInt(0)))
+                return false;
+        return true;
     }
 
     public void deleteProduct(int p_id)

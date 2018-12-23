@@ -56,6 +56,7 @@ public class AddProductActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_product);
         Server.getServer().setContext(this);
+        setTitle("Add Product");
         productname = findViewById(R.id.ETname);
         price = findViewById(R.id.ETprice);
         quantity = findViewById(R.id.ETquantity);

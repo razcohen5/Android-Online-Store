@@ -21,6 +21,7 @@ public class EditAdminPassword extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_admin_password);
+        setTitle("Change Password");
         ETold = findViewById(R.id.ETold);
         ETnew1 = findViewById(R.id.ETnew1);
         ETnew2 = findViewById(R.id.ETnew2);

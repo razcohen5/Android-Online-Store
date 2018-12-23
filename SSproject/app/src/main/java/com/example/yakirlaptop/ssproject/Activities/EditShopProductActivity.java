@@ -32,6 +32,7 @@ public class EditShopProductActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_shop_product);
         Server.getServer().setContext(this);
+        setTitle("Edit Shop Product");
         Intent intent = getIntent();
         int p_id = intent.getIntExtra("p_id", 0);
         product = Server.getServer().getProductById(p_id);

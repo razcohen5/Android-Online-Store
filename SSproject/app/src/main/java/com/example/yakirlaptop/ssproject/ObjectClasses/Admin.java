@@ -2,6 +2,8 @@ package com.example.yakirlaptop.ssproject.ObjectClasses;
 
 import com.example.yakirlaptop.ssproject.Singletons.Server;
 
+import java.util.ArrayList;
+
 public class Admin extends User {
 
     public Admin(String username, String password, int admin, String name)
@@ -27,12 +29,12 @@ public class Admin extends User {
         Server.getServer().deleteAllUsers();
     }
 
-    public void deleteSupplier(int s_id)
+    public boolean deleteSupplier(int s_id)
     {
-        Server.getServer().deleteSupplier(s_id);
+        return Server.getServer().deleteSupplier(s_id);
     }
 
-    public void deleteAllSuppliers() { Server.getServer().deleteAllSuppliers(); }
+    public boolean deleteAllSuppliers() { return Server.getServer().deleteAllSuppliers(); }
 
     public void deleteProduct(int p_id)
     {
